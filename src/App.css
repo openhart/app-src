@@ -1,0 +1,256 @@
+a {
+  color: #1264a3;
+  text-decoration: none;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+}
+
+.chat {
+  display: flex;
+  height: 100%;
+}
+
+.channels {
+  display: none;
+  background-color: #3f0e40;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  .channels {
+    display: block;
+  }
+}
+
+.channels .channel {
+  display: block;
+  color: #cfc3cf;
+  text-decoration: none;
+  padding: 0.3em 0.6em 0.3em 0.6em;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.channels #all {
+  font-weight: bold;
+  color: #fff;
+}
+
+.channels .channel.active {
+  background-color: #1164a3;
+  color: #fff;
+}
+
+.channels .channel.updated {
+  color: #fff;
+  font-weight: bold;
+}
+
+.channels .channel::before {
+  content: "#";
+  margin-right: 0.5em;
+}
+
+.channels .channel:hover:not(.active) {
+  background-color: #350d36;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.messages .list {
+  height: calc(100vh - 2em - 1px);
+}
+
+.message {
+  display: flex;
+  padding: 1em;
+  box-sizing: border-box;
+  border: 0 solid #79554830;
+}
+
+.message:hover {
+  background-color: #f8f8f8;
+}
+
+.message.active {
+  background-color: #ffc10704;
+  border-width: 1px 0;
+  padding: calc(1em - 1px) 1em;
+}
+
+.message span {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.avatar img {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.5em;
+}
+
+.data {
+  overflow-x: auto;
+}
+
+.data .meta {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.data .meta > * {
+  margin: 0 0.2em 0.2em 0.2em;
+  color: #666;
+}
+
+.meta .name {
+  font-weight: bold;
+  color: #111;
+}
+
+.meta .username::before {
+  content: "@";
+}
+
+.meta > *:not(.name) {
+  font-size: small;
+}
+
+.meta .link a {
+  filter: grayscale(100%);
+}
+
+.meta .link a:hover {
+  filter: none;
+}
+
+.messages:not(#messages-all) .meta .channel {
+  display: none;
+}
+
+.messages#messages-all .meta .link {
+  display: none;
+}
+
+.message .text {
+  margin: 0.2em;
+}
+
+.message .text em {
+  font-weight: bold;
+}
+
+.message.t .text {
+  color: #888;
+}
+
+.message .attachment {
+  border-left: 2px solid #aaa;
+  font-size: small;
+  margin-left: 0.2em;
+  padding-left: 1em;
+}
+
+.message .reactions {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em 0;
+}
+
+.message .reactions:empty {
+  display: none;
+}
+
+.message .reaction {
+  display: flex;
+  align-items: center;
+  margin: 0.1em 0.2em;
+}
+
+.message .reaction .emoji {
+  background-color: #fff;
+  border: 1px solid #1c1c1c1c;
+  border-radius: 5px;
+  cursor: default;
+  padding: 0.2em 0.4em;
+}
+
+.message .reaction .users {
+  display: flex;
+  flex-wrap: wrap;
+  color: #666;
+  font-size: small;
+  margin-left: 0.2em;
+  padding: 0.1em;
+  font-style: italic;
+}
+
+.message .reaction .users .user {
+  padding: 0.1em;
+}
+
+.search {
+  height: 2em;
+  border-top: 1px solid #ddd;
+  overflow: hidden;
+  padding: 0.2em;
+}
+
+.search input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  color: #333;
+}
+
+.search input:focus {
+  outline: none;
+}
+
+.highlight {
+  background-color: yellow;
+}
+
+.ReactVirtualized__List:focus {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .loading img {
+    animation: spinner infinite 10s linear;
+  }
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading img {
+  height: 20vmin;
+  margin-top: -14%;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+    transform-origin: 50% 86%;
+  }
+  to {
+    transform: rotate(360deg);
+    transform-origin: 50% 86%;
+  }
+}
